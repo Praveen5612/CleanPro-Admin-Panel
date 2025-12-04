@@ -1,0 +1,130 @@
+Got you — you want a **README section that explains how to run the backend locally**, including the new `dev-server.js` setup.
+
+Here is a clean, professional, ready-to-paste **README section for running the backend locally**.
+
+---
+
+# ⭐ **📘 Local Development Guide (Backend)**
+
+This backend is deployed on **Vercel**, which uses:
+
+```
+module.exports = app;
+```
+
+So the backend **cannot run locally by default** using `server.js`.
+
+To support local development, we use a separate runner file.
+
+---
+
+# 🚀 **Running the Backend Locally**
+
+Follow these steps:
+
+---
+
+## **1️⃣ Create `dev-server.js` (root of backend folder)**
+
+```js
+// dev-server.js
+// This file is ONLY for running the backend locally.
+
+const app = require("./server");   // Import exported Express app
+const PORT = process.env.PORT || 5000;
+
+app.listen(PORT, () => {
+  console.log(`🚀 Local backend running at http://localhost:${PORT}`);
+});
+```
+
+This file allows Node.js to start your Express app locally.
+
+---
+
+## **2️⃣ Add Local Script in package.json**
+
+Inside `/backend/package.json`:
+
+```json
+"scripts": {
+  "dev": "node dev-server.js"
+}
+```
+
+Now you can start the backend locally using:
+
+```
+npm run dev
+```
+
+---
+
+## **3️⃣ Setup `.env` for local backend**
+
+Create `.env` file in `/backend`:
+
+```
+DB_HOST=your-aiven-host
+DB_USER=your-aiven-user
+DB_PASSWORD=your-aiven-password
+DB_DATABASE=your-database
+JWT_SECRET=your-secret
+```
+
+You can use the same Aiven credentials both locally and in Vercel.
+
+---
+
+## **4️⃣ Local Backend URL**
+
+Once backend is running, your API is accessible at:
+
+```
+http://localhost:5000
+```
+
+---
+
+# 🌐 **Frontend Local Setup**
+
+In your frontend `.env.local`:
+
+```
+VITE_API_URL=http://localhost:5000
+```
+
+Then run frontend:
+
+```
+npm run dev
+```
+
+The frontend will now communicate with the local backend.
+
+---
+
+# 🟩 **Summary**
+
+| Task             | Local                                | Production                    |
+| ---------------- | ------------------------------------ | ----------------------------- |
+| Backend Start    | `npm run dev`                        | Vercel deploy                 |
+| Backend URL      | `http://localhost:5000`              | `https://your-app.vercel.app` |
+| Frontend API URL | `VITE_API_URL=http://localhost:5000` | Vercel backend URL            |
+| Database         | Aiven MySQL                          | Aiven MySQL                   |
+
+---
+
+# 🎉 You now have a perfect README section explaining:
+
+### ✔ How to run backend locally
+
+### ✔ How local server connects
+
+### ✔ How frontend connects
+
+### ✔ Steps for local Dev Mode
+
+---
+
+If you want, I can now generate the **complete backend README** including this section, ready to upload to GitHub.

@@ -1,0 +1,165 @@
+{
+	"info": {
+		"_postman_id": "52b78c87-8a71-4438-b004-9ec89509aadf",
+		"name": "CleanPro Admin",
+		"description": "This Postman collection contains all API routes for the CleanPro Admin Panel.  \nIt includes JWT-protected CRUD operations for managing users, retrieving statistics, and handling admin authentication.\n\nEvery request (except login) requires a valid Bearer token.  \nThe token must be generated using the backend's /api/auth/login endpoint and added to the collection variables for seamless usage.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "43468141"
+	},
+	"item": [
+		{
+			"name": "POST Request",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"user_id\": 20,\r\n    \"first_name\": \"Ram\",\r\n    \"last_name\": \"Sharma\",\r\n    \"email\": \"ram@gmail.com\",\r\n    \"role\": \"Admin\",\r\n    \"profile\": \"https://i.pinimg.com/736x/46/0d/e2/460de2e845bc95ea97ef9e3790736f81.jpg\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"users"
+					]
+				},
+				"description": "Creates a new user in the system.  \nThis endpoint accepts user details such as first name, last name, email, role, and profile image URL.  \nThe 'role' must be one of: admin, user, partner, cleaner.  \nJWT authentication is required."
+			},
+			"response": []
+		},
+		{
+			"name": "GET Request",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"users"
+					]
+				},
+				"description": "Fetches all users from the system.  \nReturns complete list of users stored in the database.  \nThis route is protected and requires a valid JWT token."
+			},
+			"response": []
+		},
+		{
+			"name": "Put Request",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"user_id\": 18,\r\n    \"first_name\": \"Ram\",\r\n    \"last_name\": \"Sita\",\r\n    \"email\": \"ram@gmail.com\",\r\n    \"role\": \"Admin\",\r\n    \"profile\": \"https://i.pinimg.com/736x/46/0d/e2/460de2e845bc95ea97ef9e3790736f81.jpg\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"users"
+					]
+				},
+				"description": "Updates an existing user's details.  \n'user_id' is mandatory and must be provided in the body.  \nOnly the fields sent in the request body will be updated.  \nThis route is protected with JWT authentication."
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Request",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"user_id\": 13\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"users"
+					]
+				},
+				"description": "Deletes a user from the system based on the provided 'user_id'.  \nRequires valid JWT authorization.  \nThis action is permanent and cannot be undone."
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJlbWFpbCI6ImFkbWluQGNsZWFucHJvLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc2NDQ5MDM0NiwiZXhwIjoxNzY1MDk1MTQ2fQ._tx-BtH0uGiuiyo870XVT1kpgwZSOtQd9XmhQxkc70Q",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
